@@ -14,19 +14,46 @@ let g:auto_save_in_insert_mode = 0
 let g:auto_save_silent = 1
 set noswapfile
 
+" no start message
 set shortmess+=I
+
+" indent
 set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
+set autoindent
 syntax on
-filetype indent on
-set autoindent smartindent
-autocmd FileType tex set indentkeys=''
+filetype plugin indent on
+autocmd FileType tex set indentkeys=''       " tex
+autocmd BufRead,BufNewFile *.html,*.tmpl set tabstop=2 shiftwidth=2
+let g:pyindent_open_paren='&sw'
+let g:pyindent_continue='&sw'
 
-set wrap linebreak nolist wrapmargin=0
+" don't continue comments
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
-autocmd BufRead,BufNewFile *.py,*.js,*.java,*.ml set textwidth=80 colorcolumn=+1
-hi ColorColumn ctermbg=252
+" select color
+hi Visual ctermbg=252
 
-set splitbelow
-set splitright
+" wrap
+set wrap linebreak nolist wrapmargin=0 display=lastline
 
+" 80 column marker
+autocmd BufRead,BufNewFile *.py,*.js,*.java,*.ml set textwidth=79 colorcolumn=+1
+hi ColorColumn ctermbg=248
 
+" esc timeout
+set timeoutlen=1000 ttimeoutlen=0
+
+" split mode for new panes
+set splitbelow splitright
+
+" tab completion
+set wildmenu wildmode=longest,list,full
+
+" move cursor by display line
+noremap <silent> k gk
+noremap <silent> j gj
+noremap <silent> 0 g0
+noremap <silent> $ g$
+
+" search
+set incsearch nohlsearch ignorecase smartcase

@@ -1,3 +1,9 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =1
+let g:netrw_dirhist_cnt =7
 let g:netrw_dirhist_1='/Users/andrew'
+let g:netrw_dirhist_2='/private/etc'
+let g:netrw_dirhist_3='/Users/andrew/Dev/research/streetcrowd/geoteams/locations'
+let g:netrw_dirhist_4='/Users/andrew/Pictures'
+let g:netrw_dirhist_5='/Users/andrew/Dev/research/streetcrowd/geoteams/locations'
+let g:netrw_dirhist_6='/Users/andrew/Dev/research/wiki-afd/proc/2016'
+let g:netrw_dirhist_7='/Users/andrew/Dev/research/streetcrowd/geoteams/locations'
