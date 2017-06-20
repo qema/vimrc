@@ -21,9 +21,8 @@ set shortmess+=I
 set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
 set autoindent
 syntax on
-filetype plugin indent on
-autocmd FileType tex set indentkeys=''       " tex
-autocmd BufRead,BufNewFile *.html,*.tmpl set tabstop=2 shiftwidth=2
+autocmd FileType tex setlocal indentkeys=''       " tex
+autocmd BufRead,BufNewFile *.md,*.md+,*.html,*.html+,*.tmpl setlocal tabstop=2 shiftwidth=2
 let g:pyindent_open_paren='&sw'
 let g:pyindent_continue='&sw'
 
@@ -37,7 +36,7 @@ hi Visual ctermbg=252
 set wrap linebreak nolist wrapmargin=0 display=lastline
 
 " 80 column marker
-autocmd BufRead,BufNewFile *.py,*.js,*.java,*.ml set textwidth=79 colorcolumn=+1
+autocmd BufRead,BufNewFile *.py,*.js,*.java,*.ml setlocal textwidth=79 colorcolumn=+1 sw=4
 hi ColorColumn ctermbg=248
 
 " esc timeout
@@ -57,3 +56,4 @@ noremap <silent> $ g$
 
 " search
 set incsearch nohlsearch ignorecase smartcase
+
