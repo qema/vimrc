@@ -5,8 +5,13 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin '907th/vim-auto-save'
+"Plugin 'cocopon/iceberg.vim'
 call vundle#end()
 filetype plugin indent on
+
+" theme
+set background=dark
+colorscheme peachpuff
 
 " autosave
 let g:auto_save = 1
@@ -30,7 +35,7 @@ let g:pyindent_continue='&sw'
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 " select color
-hi Visual ctermbg=252
+hi Visual term=NONE cterm=NONE ctermbg=238
 
 " wrap
 set wrap linebreak nolist wrapmargin=0 display=lastline
@@ -56,4 +61,3 @@ noremap <silent> $ g$
 
 " search
 set incsearch nohlsearch ignorecase smartcase
-

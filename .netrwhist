@@ -1,0 +1,10 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =8
+let g:netrw_dirhist_1='/c/Users/andrew/.docker/machine/certs'
+let g:netrw_dirhist_2='/c/Users/andrew/Dev/research/psl/universe-human/remote/app'
+let g:netrw_dirhist_3='/c/Users/andrew/.aws'
+let g:netrw_dirhist_4='/c/Users/andrew/Dev/research/psl/universe-human/remote/app/universe-envs'
+let g:netrw_dirhist_5='/tmp/data'
+let g:netrw_dirhist_6='/tmp/data/cls_5.mbs_25.k_shot_1.inner_numstep1.inner_updatelr0.4'
+let g:netrw_dirhist_7='/tmp/data'
+let g:netrw_dirhist_8='/tmp/data/cls_5.mbs_25.k_shot_1.inner_numstep1.inner_updatelr0.4'
