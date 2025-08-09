@@ -1,15 +1,32 @@
-" vim-plug
-call plug#begin()
-Plug '907th/vim-auto-save'
-Plug 'valloric/youcompleteme'
-Plug 'sheerun/vim-polyglot'
-Plug 'jeffkreeftmeijer/vim-dim'
-Plug 'preservim/nerdtree', {'on': ['NERDTreeToggle', 'NERDTreeFind']}
-Plug 'lervag/vimtex'
-call plug#end()
+packadd lsp
+packadd dispatch
 
-" esc timeout
+call LspAddServer([#{
+	\    name: 'clangd',
+	\    filetype: ['c', 'cpp'],
+	\    path: '/usr/bin/clangd',
+	\    args: ['--background-index', '--clang-tidy']
+	\  }])
+
+call LspAddServer([#{
+	\    name: 'rustlang',
+	\    filetype: ['rust'],
+	\    path: '/Users/andrew/.cargo/bin/rust-analyzer',
+	\    args: [],
+	\    syncInit: v:true
+	\  }])
+
+syntax enable
+filetype plugin on
+filetype plugin indent on
+
+" buffers
+set autowrite
+set hidden
+
+" timeouts
 set timeoutlen=1000 ttimeoutlen=0
+set updatetime=300
 
 " leader key
 nnoremap <SPACE> <Nop>
@@ -32,16 +49,8 @@ set noswapfile
 set shortmess+=I
 
 " theme/coloring
-colorscheme dim
-syntax on
-hi CursorLine none
-hi CursorLineNr none
-hi clear SignColumn
-hi SpellBad ctermbg=none ctermfg=9
-hi SpellCap ctermbg=none ctermfg=11
-hi error ctermbg=none ctermfg=9
-hi todo ctermbg=none ctermfg=11
-hi MatchParen ctermbg=8
+"set termguicolors
+"colorscheme zaibatsu
 
 " gutter column
 set signcolumn=yes
@@ -49,7 +58,7 @@ set number relativenumber
 set cursorline
 
 " indent
-"set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
+set tabstop=4 softtabstop=0 smarttab
 set expandtab
 set autoindent
 set breakindent
@@ -68,25 +77,29 @@ set splitbelow splitright
 set wildmenu wildmode=longest,list,full
 
 " search
-set incsearch nohlsearch ignorecase smartcase
+set incsearch nohlsearch smartcase infercase
 
 " autochdir
 set autochdir
 
-" nerdtree
-nnoremap <Leader>t :NERDTreeToggle<Enter>
-nnoremap <silent> <Leader>f :NERDTreeFind<CR>
-let NERDTreeQuitOnOpen=1
-let NERDTreeAutoDeleteBuffer=1
-let NERDTreeMinimalUI=1
-let NERDTreeDirArrows=1
+" buffers
+nmap <silent> [b :bp<CR>
+nmap <silent> ]b :bn<CR>
 
 " latex
 let g:vimtex_view_method='skim'
 nmap <localleader>v <plug>(vimtex-view)
 
-" ycm
-let g:ycm_global_ycm_extra_conf='~/.ycm_extra_conf.py'
-let g:ycm_auto_hover=''
-set completeopt-=preview
-nmap <leader>D <plug>(YCMHover)
+" lsp
+nmap <localleader>ca :LspCodeAction<CR>
+nmap <silent> [d :LspDiag prevWrap<CR>
+nmap <silent> ]d :LspDiag nextWrap<CR>
+noremap <silent> gd :LspGotoDefinition<CR>
+nmap <silent> <localleader>e :LspDiag current<CR>
+nmap <silent> <localleader>f :LspFormat<CR>
+nmap <silent> <localleader>K :LspHover<CR>
+nmap <silent> <localleader>rn :LspRename<CR>
+nmap <silent> <localleader>h :LspSwitchSourceHeader<CR>
+
+" dispatch
+nmap <silent> <localleader>m :Make<CR>
